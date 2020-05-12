@@ -1,0 +1,41 @@
+body {
+    background-image: url("https://images.pexels.com/photos/2096578/pexels-photo-2096578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    background-size: 100vw;
+    font-family: Arial;
+    color: whitesmoke;
+    height: 100vh;
+  }
+  
+  .menu {
+    background-color: #642;
+  }
+  
+  .menu ul {
+    display: flex;
+    justify-content: space-around;
+    margin-right: 30px;
+    margin-top: 10px;
+  }
+  
+  .menu li {
+    list-style: none;
+  }
+  
+  a {
+    color: teal;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .site-title,
+  .site-subtitle {
+    text-align: center;
+    color: whitesmoke;
+  }
+  
+  .site-subtitle {
+    font-style: italic;
+  }
