@@ -1,41 +1,268 @@
+/* soft reset do css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    background-image: url("https://images.pexels.com/photos/2096578/pexels-photo-2096578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-    background-size: 100vw;
-    font-family: Arial;
-    color: whitesmoke;
-    height: 100vh;
+  /*background-image: url("https://images.pexels.com/photos/2096578/pexels-photo-2096578.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");*/
+  background-image: url("../img/fundo.jpg");
+  background-size: auto 100vh;
+  font-family: 'Source Code Pro', monospace;
+  height: 100vh;
+  font-size: 12px;
+}
+
+/* se a tela tiver pelo menos 400px, os estilos abaixo serão carregados */
+@media (min-width: 400px) {
+  body {
+    font-size: 14px;
   }
+}
+
+/* breakpoint (faixas de tela que precisam de ajustes) */
+@media (min-width: 600px) {
+  body {
+    background-attachment: fixed;
+    background-size: cover;
+    font-size: 18px;
+  }
+}
+
+/* breakpoint */
+@media (min-width: 1200px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+header {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  background-color: whitesmoke;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  z-index: 1;
+}
+
+.menu ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu a {
+  /* background-color: aquamarine; */
+  display: block;
+  padding: 10px 30px;
+  transition: background-color, color, 300ms;
+}
+
+.menu a:active,
+.menu a:hover {
+  background-color: teal;
+  color: whitesmoke;
+}
   
-  .menu {
-    background-color: #642;
-  }
+a {
+  color: teal;
+  text-decoration: none;
+}
   
-  .menu ul {
-    display: flex;
-    justify-content: space-around;
-    margin-right: 30px;
-    margin-top: 10px;
+a:hover {
+  text-decoration: underline;
+}
+
+.titulo {
+  transform: scale(0.2) translateY(50vh);
+  opacity: 0;
+  animation: 1s ease /*linear*/ 500ms animacaoTitulo forwards;
+}
+
+@keyframes animacaoTitulo {
+  /* from or 0% não necessários no caso da animação linear */
+  0% {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
   }
+  /* to or 100% */
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.site-subtitle,
+.site-title {
+  color: whitesmoke;
+  text-align: center;
+}
+
+.site-title {
+  font-size: 4em;
+  font-family: 'Gloria Hallelujah', cursive;
+}
   
-  .menu li {
-    list-style: none;
+.site-subtitle {
+  font-style: italic;
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.8em;
+}
+
+.sobre,
+.contato,
+.portfolio {
+  /* background-color: pink; -- usar para debugging apenas */
+  padding: 2em;
+  min-height: 100vh;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
   }
-  
-  a {
-    color: teal;
-    text-decoration: none;
+}
+
+.sobre h2,
+.contato h2,
+.portfolio h2 {
+  font-family: 'Press Start 2P', cursive;
+  color: whitesmoke;
+  margin-bottom: 1.5em;
+  font-size: 2em;
+}
+
+.sobre p {
+  color: whitesmoke;
+  text-indent: 2em;
+  margin-bottom: 1em;
+}
+
+.sobre a {
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.sobre a:hover {
+  background-color: teal;
+  text-decoration: none;
+  color: magenta;
+}
+
+.sobre .avatar {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  margin-left: 2em;
+}
+
+/* .sobre .avatar img {
+  border-radius: 50%;
+} */
+
+@media (min-width: 600px) {
+  .sobre .avatar {
+    float: right;
+    clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
   }
-  
-  a:hover {
-    text-decoration: underline;
+}
+
+.portfolio .grid {
+  display: grid;
+  gap: 2em;
+}
+
+@media (min-width: 560px) {
+  .portfolio .grid {
+    grid-template-columns: repeat(2, 240px);
+    justify-content: center;
   }
-  
-  .site-title,
-  .site-subtitle {
-    text-align: center;
-    color: whitesmoke;
+}
+
+@media (min-width: 880px) {
+  .portfolio .grid {
+    grid-template-columns: repeat(3, 260px);
+    align-content: center;
+    justify-content: center;
+    height: calc(100vh - 48px - 8em);
   }
-  
-  .site-subtitle {
-    font-style: italic;
-  }
+}
+
+.flip-card {
+  height: 180px;
+  perspective: 1000px;
+}
+
+.flip-card:hover .card{
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 3s;
+}
+
+.card-front,
+.card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hiddden;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,.7);
+  height: 180px;
+  width: 100%;
+  transform: rotateY(180deg);
+}
+
+.portfolio figure {
+  text-align: center;
+}
+
+.img-portfolio {
+  height: 180px;
+  width: 100%;
+  object-fit: cover;
+  object-position: left bottom;
+  /* border-radius: 5px; */
+  /* transform: scale(1); */
+  transition: transform 500ms;
+}
+
+/* .img-portfolio:hover {
+  transform: scale(1.05) *rotate(-2deg);
+} */
+
+.contato .icons {
+  text-align: center;
+}
+
+.contato a {
+  color: whitesmoke;
+  font-size: 4em;
+  transition: text-shadow 1s;
+}
+
+.contato a:active,
+.contato a:hover {
+  text-decoration: none;
+  text-shadow: 0px 0px 10px turquoise;
+}
